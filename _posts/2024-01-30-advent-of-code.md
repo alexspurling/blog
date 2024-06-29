@@ -2,7 +2,8 @@
 
 With perfect timing for the beginning of Advent of Code 2023, [a post appeared on Hacker News](https://news.ycombinator.com/item?id=38489340) 
 introducing a new programming language called [Onyx](https://onyxlang.io/). This language compiles to WebAssembly which means it can be called 
-from an HTML / JS website or even a server-side WebAssembly runtime.
+from an HTML / JS website or even a server-side WebAssembly runtime. The purpose of attempting Advent of Code is to challenge onself so why not
+make learning a new language part of that challenge?
 
 ### A Framework for a Puzzle Solving
 
