@@ -11,19 +11,19 @@ Since my Advent of Code solutions would be compiled to WebAssembly, it made sens
 Sticking with the *advent* theme, I generated an image of a "coding inspired advent calendar" with Midjourney with a numbered window linking
 into each solution:
 
-![Advent of code screenshot]({{ site.baseurl }}/_assets/images/AdventScreenshot1.png)
+![Advent of code screenshot]({{ site.baseurl }}/assets/images/AdventScreenshot1.png)
 
 Clicking on a window brings up a description of the problem with links that call through to the compiled Onyx solution.
 
-![Problem description screenshot]({{ site.baseurl }}/_assets/images/AdventScreenshot2.png)
+![Problem description screenshot]({{ site.baseurl }}/assets/images/AdventScreenshot2.png)
 
 ### Onyx API
 
 In Onyx, I exported two functions, one to return the description of a given problem, and another to return the solution.
 
-![Describe function code screenshot]({{ site.baseurl }}/_assets/images/DescribeFunction.png)
+![Describe function code screenshot]({{ site.baseurl }}/assets/images/DescribeFunction.png)
 
-![Solve function code screenshot]({{ site.baseurl }}/_assets/images/SolveFunction.png)
+![Solve function code screenshot]({{ site.baseurl }}/assets/images/SolveFunction.png)
 
 With this entry point, I delegate to an Onyx module for that day's solution.
 
@@ -42,7 +42,7 @@ An additional reason to build a framework around my Advent of Code solutions was
 this example, the problem requires solving a maze using specific rules around when you can turn left or right.
 
 <video width="100%" preload="auto" muted controls>
-    <source src="{{ site.baseurl }}/_assets/Problem17Visualisation.mp4" type="video/mp4"/>
+    <source src="{{ site.baseurl }}/assets/Problem17Visualisation.mp4" type="video/mp4"/>
 </video>
 
 This works by allocating a chunk of memory in Onyx and exporting a pointer to it. Then in Javascript, I reference this chunk of memory as
