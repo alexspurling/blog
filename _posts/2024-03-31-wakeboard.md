@@ -1,6 +1,6 @@
 # Wakeboard
 
-Wakeboard is a custom PCB I designed which holds an ESP32 S3 and an accelerometer. It's designed to sit on top of my
+Wakeboard is a custom PCB I designed which combines an ESP32 S3 and an accelerometer. It's designed to sit on top of my
 washing machine and alert me when a washing cycle is complete. I also designed a custom 3D printed case for it.
 
 ![Wakeboard photo 1]({{site.baseurl}}/assets/images/Wakeboard1.jpg)
@@ -132,9 +132,18 @@ python-like language.
 I had to go through multiple designs and iterations before settling on the final design. Perhaps the trickiest thing to
 get right was the tabs that would allow the lid to clip on and off. This is a form of snap fit enclosure where the tabs
 on the lid latch onto the slots in the base. Another consideration was making room for 4 magnets to place in the base
-so that the whole 
+so that the device can sit securely on top of the washing machine. The print was ordered from JLCPCB for just £6.78
+including shipping.
 
 ![Enclosure 3D model]({{site.baseurl}}/assets/images/WakeboardEnclosure.png)
+
+## Usage
+
+So far the device has been running for three months reliably detecting and notifying when my washing is complete and has
+used only 1% of its 2000 mAh battery. This is actually much better battery drain than I expected and it is actually
+hard to believe the battery can last this long. However I have confirmed my voltage readings using a multimeter so it
+remains to be seen just how many months the device can last before requiring a recharge. I will update this post when
+the battery finally dies.
 
 The micropython code is available here: https://github.com/alexspurling/micropython-washingmachine
 
