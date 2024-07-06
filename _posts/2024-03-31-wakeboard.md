@@ -3,15 +3,15 @@
 Wakeboard is a custom PCB I designed which holds an ESP32 S3 and an accelerometer. It's designed to sit on top of my
 washing machine and alert me when a washing cycle is complete. I also designed a custom 3D printed case for it.
 
-![Wakeboard photo 1](/assets/images/Wakeboard1.jpg)
+![Wakeboard photo 1]({{site.baseurl}}/assets/images/Wakeboard1.jpg)
 
-![Wakeboard photo 2](/assets/images/Wakeboard2.jpg)
+![Wakeboard photo 2]({{site.baseurl}}/assets/images/Wakeboard2.jpg)
 
 ## Prototype
 
 A while ago, I built the initial version around the Wemos Lolin ESP32 dev board and an LIS3DH breakout board
 
-![Prototype](/assets/images/Prototype1.jpg)
+![Prototype]({{site.baseurl}}/assets/images/Prototype1.jpg)
 
 The prototype had a few disadvantages the biggest being higher power usage. The prototype would consume about 130 uA
 meaning it could sit in deepsleep mode for about 6 weeks before requiring a recharge.
@@ -28,7 +28,7 @@ symbol, footprint and 3D model making it easy to import into KiCad. I chose to u
 components as this is just about as small as you can reasonably when it comes to assembly. At this point, the design 
 process was just a matter of placing components down, and drawing wires between all the pins that needed to be connected.  
 
-![Prototype](/assets/images/Wakeboard.svg)
+![Prototype]({{site.baseurl}}/assets/images/Wakeboard.svg)
 
 When all the components are wired together on the schematic, the PCB design process involves physically placing them
 on the board. Given my lack of experience, this took quite a lot of iteration before all the components were in a
@@ -45,15 +45,15 @@ data speeds are slow impedance matching is less important. In the case of the ES
 Full Speed which is actually the second-slowest USB speed and this seems perfectly fine for uploading firmware without
 any impedance matching.
 
-![Prototype](/assets/images/PCB.png)
+![Prototype]({{site.baseurl}}/assets/images/PCB.png)
 
-![Prototype](/assets/images/Wakeboard3D.png)
+![Prototype]({{site.baseurl}}/assets/images/Wakeboard3D.png)
 
 ## Firmware
 
 The design of the algorithm is quite simple:
 
-![Wakeboard algorithm](/assets/images/WakeboardFlowchart.svg)
+![Wakeboard algorithm]({{site.baseurl}}/assets/images/WakeboardFlowchart.svg)
 
 The LIS3DH accelerometer that I am using has a feature that allows you to configure it to trigger an interrupt when a
 certain threshold of movement is reached. The exact values can be configured dynamically but I discovered through trial
@@ -108,11 +108,11 @@ micropython when working with the ESP32. As you can see the code is fairly easy 
 To send a notification to my phone, I used Telegram's API to create a bot. This not only allows the device to send
 messages to my phone but also allows me to send messages to the device.
 
-![Notificaiton screenshot](/assets/images/WakeboardNotification.png)
+![Notificaiton screenshot]({{site.baseurl}}/assets/images/WakeboardNotification.png)
 
 I can also set the sensitivity thresholds by sending a command:
 
-![Set sensitivity screenshot](/assets/images/WakeboardSetSensitivity.png)
+![Set sensitivity screenshot]({{site.baseurl}}/assets/images/WakeboardSetSensitivity.png)
 
 ## Assembly
 
@@ -121,7 +121,7 @@ the provided stencil. Then each component was carefully placed with the help of 
 very cheap 65W USC-C hotplate to melt the solder. The cost including shipping for five PCBs and one stencil was £19.24 
 and the total cost including shipping of the components (excluding battery) was £29.17.
 
-![Assembly photo](/assets/images/WakeboardAssembly.jpg)
+![Assembly photo]({{site.baseurl}}/assets/images/WakeboardAssembly.jpg)
 
 ## Enclosure
 
@@ -134,7 +134,7 @@ get right was the tabs that would allow the lid to clip on and off. This is a fo
 on the lid latch onto the slots in the base. Another consideration was making room for 4 magnets to place in the base
 so that the whole 
 
-![Enclosure 3D model](/assets/images/WakeboardEnclosure.png)
+![Enclosure 3D model]({{site.baseurl}}/assets/images/WakeboardEnclosure.png)
 
 The micropython code is available here: https://github.com/alexspurling/micropython-washingmachine
 
