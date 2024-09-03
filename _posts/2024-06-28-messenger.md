@@ -4,12 +4,12 @@
 In 2005, NASA's MESSENGER spacecraft flew by Earth on its way to Mercury and as it departed, turned back to take 1080 
 photos of Earth over a period of 24 hours. In that time it flew 370,287 km just beyond the orbit of the Moon.
 
-![View of Earth from the Messenger probe as it flew by in 2006](/assets/images/EarthAnimation.gif)
+![View of Earth from the Messenger probe as it flew by in 2006]({{site.baseurl}}/assets/images/EarthAnimation.gif)
 
 Unfortunately, back in 2005, video compression technology was not particularly advanced and so when NASA released this 
 timelapse, it was significantly lower in quality.
 
-![NASA video of MESSENGER Earth flyby](/assets/video/PIA10120.mpeg)
+![NASA video of MESSENGER Earth flyby]({{site.baseurl}}/assets/video/PIA10120.mpeg)
 
 ## Pulling the archive image data
 
@@ -20,7 +20,7 @@ and an XML metadata file. The IMG format is NASA's uncompressed 16bit image form
 metadata such as exposure time, ship position and attitude as well as filter information. In fact each frame of this
 timelapse consists of 3 separate image take through different red, green and blue filters.
 
-![View of Earth from the Messenger probe as it flew by in 2006](/assets/images/MessengerFrames.gif)
+![View of Earth from the Messenger probe as it flew by in 2006]({{site.baseurl}}/assets/images/MessengerFrames.gif)
 
 ## Transforming the images
 
