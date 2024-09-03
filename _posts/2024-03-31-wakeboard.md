@@ -145,6 +145,8 @@ hard to believe the battery can last this long. However I have confirmed my volt
 remains to be seen just how many months the device can last before requiring a recharge. I will update this post when
 the battery finally dies.
 
-The micropython code is available here: https://github.com/alexspurling/micropython-washingmachine
+The micropython code is available here: [https://github.com/alexspurling/micropython-washingmachine](
+https://github.com/alexspurling/micropython-washingmachine)
 
-The enclosure and KiCad project files are available here: https://github.com/alexspurling/wakeboard
+The enclosure and KiCad project files are available here: [https://github.com/alexspurling/wakeboard](
+https://github.com/alexspurling/wakeboard)
