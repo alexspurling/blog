@@ -25,13 +25,14 @@ SmartBee's [BeeS3](https://github.com/strid3r21/BeeS3) and
 ensure I chose components that are available on LCSC (the parts supplier for JLCPCB). To make this easier, I found a
 [python script](https://github.com/uPesy/easyeda2kicad.py) that takes an LCSC part number and downloads the part's 
 symbol, footprint and 3D model making it easy to import into KiCad. I chose to use 0805 sizes for the small SMD 
-components as this is just about as small as you can reasonably when it comes to assembly. At this point, the design 
-process was just a matter of placing components down, and drawing wires between all the pins that needed to be connected.  
+components as this is just about as small as you can reasonably manage when it comes to hand assembly. At this point, 
+the design process was just a matter of placing components down and drawing wires between all the pins that needed to 
+be connected.
 
 ![Prototype]({{site.baseurl}}/assets/images/Wakeboard.svg)
 
-When all the components are wired together on the schematic, the PCB design process involves physically placing them
-on the board. Given my lack of experience, this took quite a lot of iteration before all the components were in a
+When all the components are wired together on the schematic, the PCB design process involves positioning them on the 
+board. Given my lack of experience, this took quite a lot of iteration before all the components were in a
 position that they could be connected with traces without causing conflicts. I wanted to stick to using just 2 layers
 because 2-layer boards are much cheaper to order.
 
@@ -71,7 +72,7 @@ micropython when working with the ESP32. As you can see the code is fairly easy 
     def start(self):
 
         print('Device woke')
-        self.blink(1)
+        self.blink(1) # Blink the LED once
 
         reason = machine.wake_reason()
 
