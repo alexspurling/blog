@@ -7,7 +7,7 @@ photos of Earth over a period of 24 hours. In that time it flew 370,287 km just 
 ![View of Earth from the Messenger probe as it flew by in 2006]({{site.baseurl}}/assets/images/EarthAnimation.gif)
 
 Unfortunately, back in 2005, video compression technology was not particularly advanced and so when NASA released this 
-timelapse, it was significantly lower in quality.
+timelapse, it was significantly lower in quality. (Right click and click Play if the video doesn't autoplay)
 
 <video autoplay="autoplay" loop="loop" width="512" height="512">
   <source src="{{site.baseurl}}/assets/video/MESSENGEREarthDeparture.mp4" type="video/mp4">
@@ -20,7 +20,7 @@ a bit of digging I found the image data from MESSENGER for this time period in
 [this directory](https://pdsimage2.wr.usgs.gov/Messenger/MSGRMDS_1001/). Each image is stored in two files an IMG image
 and an XML metadata file. The IMG format is NASA's uncompressed 16bit image format. The XML file contains additional
 metadata such as exposure time, ship position and attitude as well as filter information. In fact each frame of this
-timelapse consists of 3 separate image take through different red, green and blue filters.
+timelapse consists of 3 separate images taken through different red, green and blue filters.
 
 ![View of Earth from the Messenger probe as it flew by in 2006]({{site.baseurl}}/assets/images/MessengerFrames.gif)
 
@@ -62,22 +62,22 @@ example, its blue component is clearly overly represented.
 
 This can be confirmed by looking at the metadata of each image:
 
-Red: 
-```xml filename="EW0031519848C.xml"
+Red (EW0031519848C.xml): 
+```xml
 <start_date_time>2005-08-03T01:31:45.7857Z</start_date_time>
 <img:exposure_duration unit="ms">28</img:exposure_duration><!-- EXPOSURE_DURATION -->
 <img:exposure_type>Auto</img:exposure_type><!-- EXPOSURE_TYPE -->
 ```
 
-Green:
-```xml filename="EW0031519851D.xml"
+Green (EW0031519851D.xml):
+```xml
 <start_date_time>2005-08-03T01:31:48.7987Z</start_date_time>
 <img:exposure_duration unit="ms">15</img:exposure_duration><!-- EXPOSURE_DURATION -->
 <img:exposure_type>Auto</img:exposure_type><!-- EXPOSURE_TYPE -->
 ```
 
-Blue:
-```xml filename="EW0031519854E.xml"
+Blue (EW0031519854E.xml):
+```xml
 <start_date_time>2005-08-03T01:31:51.7877Z</start_date_time>
 <img:exposure_duration unit="ms">26</img:exposure_duration><!-- EXPOSURE_DURATION -->
 <img:exposure_type>Auto</img:exposure_type><!-- EXPOSURE_TYPE -->
@@ -162,7 +162,37 @@ Feeling slightly daunted, I began the task of implementing these calibration fun
 appears to provide most of the necessary information and I was able to implement the `Dk` (dark level) function.
 
 ```python
+def dark_polynomial(variable, darktable, T):
+    # C(T) = H0 + H1 * T + H2 * T**2 + H3 * T**3
+    return (darktable[variable][0] +
+            darktable[variable][1] * T +
+            darktable[variable][2] * math.pow(T, 2) +
+            darktable[variable][3] * math.pow(T, 3))
 
+
+def calibrate_dark(pds_image, darktable):
+    T = pds_image.label['MESS:CCD_TEMP']
+    C = dark_polynomial('C', darktable, T)
+    D = dark_polynomial('D', darktable, T)
+    E = dark_polynomial('E', darktable, T)
+    F = dark_polynomial('F', darktable, T)
+    O = dark_polynomial('O', darktable, T)
+    P = dark_polynomial('P', darktable, T)
+    Q = dark_polynomial('Q', darktable, T)
+    S = dark_polynomial('S', darktable, T)
+
+    t = pds_image.label['MESS:EXPOSURE']
+
+    img = pds_image.image
+
+    for y in range(img.shape[1]):
+        for x in range(img.shape[0]):
+            dn = img[y, x]
+            dk = C + D + (E + F * t) * y + (O + P * t + (Q + S * t) * y) * x
+            if dk < dn:
+                img[y, x] = dn - dk
+            else:
+                img[y, x] = 0
 ```
 
-With the dark level calibrated, 
+With the dark level calibrated and the same exposure adjustment as before, we get the following result:
