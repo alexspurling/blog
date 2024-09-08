@@ -9,7 +9,9 @@ photos of Earth over a period of 24 hours. In that time it flew 370,287 km just 
 Unfortunately, back in 2005, video compression technology was not particularly advanced and so when NASA released this 
 timelapse, it was significantly lower in quality.
 
-![NASA video of MESSENGER Earth flyby]({{site.baseurl}}/assets/video/PIA10120.mpeg)
+<video autoplay="autoplay" loop="loop" width="512" height="512">
+  <source src="{{site.baseurl}}/assets/video/MESSENGEREarthDeparture.mp4" type="video/mp4">
+</video>
 
 ## Pulling the archive image data
 
